@@ -1,0 +1,238 @@
+#include <iostream>
+
+using namespace std;
+
+void problema1();
+void problema2();
+void problema3();
+void problema4();
+void problema5();
+void problema6();
+void problema7();
+void problema8();
+void problema9();
+void problema10();
+void problema11();
+void problema12();
+void problema13();
+void problema14();
+void problema15();
+void problema16();
+void problema17();
+void problema18();
+
+int main()
+{
+    int problemas = 19;
+
+    cout<<"que problema desea ejecutar: ";
+    cin>> problemas;
+
+    switch (problemas) {
+    case 1:
+        problema1();
+        break;
+    case 2:
+        problema2();
+        break;
+    break;
+    case 3:
+        problema3();
+        break;
+    case 4:
+        problema4();
+        break;
+    case 5:
+        problema5();
+        break;
+    case 6:
+        problema6();
+        break;
+    case 7:
+        problema7();
+    case 8:
+        problema8();
+        break;
+    case 9:
+        problema9();
+        break;
+    case 10:
+        problema10();
+        break;
+    case 11:
+        problema11();
+        break;
+    case 12:
+        problema12();
+        break;
+    case 13:
+        problema14();
+        break;
+    case 14:
+        problema15();
+        break;
+    case 15:
+        problema15();
+        break;
+    case 16:
+        problema16();
+        break;
+    case 17 :
+        problema17();
+        break;
+    case 18:
+        problema18();
+        break;
+    default:
+        break;
+    }
+}
+void problema1(){}
+void problema2(){
+    const int nletras = 200;
+    char letras[nletras];
+    int count[26] = {0};
+
+    for (int i = 0; i < nletras; i++) {
+        letras[i] = 'A' + rand() % 26;
+        count[letras[i] - 'A']++;
+    }
+
+    for (int i = 0; i < nletras; i++) {
+        cout << letras[i];
+    }
+    cout << endl;
+
+    for (int i = 0; i < 26; i++) {
+        if (count[i] > 0) {
+            cout << char('A' + i) << ": " << count[i] << endl;
+        }
+    }
+
+}
+void problema3(){
+    char cadena1[100], cadena2[100];
+     bool iguales = true;
+
+     cout << "Introduce la primera cadena: ";
+     cin>>cadena1;
+
+     cout << "Introduce la segunda cadena: ";
+     cin>>cadena2;
+
+     // Comparar las cadenas
+     int i = 0;
+     while (cadena1[i] != '\0' || cadena2[i] != '\0') {
+         if (cadena1[i] != cadena2[i]) {
+             iguales = false; // Si encuentra una diferencia, cambia a falso
+             break;
+         }
+         i++;
+     }
+
+     // Verificar si las cadenas son iguales
+     if (iguales) {
+         cout << "Las cadenas son iguales" << endl;
+     } else {
+         cout << "Las cadenas son diferentes" << endl;
+     }
+
+}
+void problema4(){
+
+}
+void problema5(){}
+void problema6(){}
+void problema7(){
+    string cadena, resultado = "";
+
+    cout << "Introduce una cadena: ";
+    cin >> cadena;
+
+    for (int i = 0; i < cadena.length(); i++) {
+        bool repetido = false;
+        // Verificar si el carácter ya está en el resultado
+        for (int j = 0; j < resultado.length(); j++) {
+            if (cadena[i] == resultado[j]) {
+                repetido = true;
+                break;
+            }
+        }
+        // Si no está repetido, agregarlo al resultado
+        if (!repetido) {
+            resultado += cadena[i];
+        }
+    }
+
+    cout << "Original: " << cadena << endl;
+    cout << "Sin repetidos: " << resultado << endl;
+
+
+}
+void problema8(){
+    string cadena, Texto = "", Numeros = "";
+
+    cout << "Introduce una cadena: ";
+    cin >> cadena;
+
+    // Recorremos la cadena y separamos números de letras
+    for (int i = 0; i < cadena.length(); i++) {
+        if (isdigit(cadena[i])) {
+            Numeros += cadena[i];  // Si es un dígito, se agrega a soloNumeros
+        } else {
+            Texto += cadena[i];    // Si no es un dígito, se agrega a soloTexto
+        }
+    }
+
+    // Mostrar resultados
+    cout << "Original: " << cadena << endl;
+    cout << "Texto: " << Texto << ". Numero: " << Numeros << "." << endl;
+
+}
+void problema9(){
+    int n;
+    string cadena;
+
+    cout << "Introduce el numero de cifras que desea separar: ";
+    cin >> n;
+
+    cout << "Introduce una cadena de caracteres numéricos: ";
+    cin >> cadena;
+
+    // Calcular cuántos ceros agregar si la cadena no es divisible por n
+    int longitud = cadena.length();
+    int faltantes = n - (longitud % n);
+
+    if (faltantes != n) {
+        // Agregar ceros a la izquierda
+        for (int i = 0; i < faltantes; i++) {
+            cadena = '0' + cadena;
+        }
+    }
+
+    cout << "Original: " << cadena << endl;
+
+    int suma = 0;
+
+    // Iterar sobre la cadena en bloques de n caracteres
+    for (int i = 0; i < cadena.length(); i += n) {
+        int numero = 0;
+        // Convertir bloque de n caracteres a número
+        for (int j = 0; j < n; j++) {
+            numero = numero * 10 + (cadena[i + j] - '0');
+        }
+        suma += numero;  // Sumar el número
+    }
+
+    cout << "Suma: " << suma << endl;
+
+}
+void problema10(){}
+void problema11(){}
+void problema12(){}
+void problema13(){}
+void problema14(){}
+void problema15(){}
+void problema16(){}
+void problema17(){}
+void problema18(){}
