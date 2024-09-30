@@ -87,7 +87,32 @@ int main()
         break;
     }
 }
-void problema1(){}
+void problema1(){
+    int cantidad;
+
+    // Solicitar al usuario la cantidad de dinero
+    cout << "Ingrese la cantidad de dinero: ";
+    cin >> cantidad;
+
+    // Arreglos con las denominaciones de billetes y monedas
+    int denominaciones[] = {50000, 20000, 10000, 5000, 2000, 1000, 500, 200, 100, 50};
+    int cantidadBilletesMonedas[10] = {0};  // Para almacenar la cantidad de cada denominación
+
+    for (int i = 0; i < 10; i++) {
+        cantidadBilletesMonedas[i] = cantidad / denominaciones[i];  // Cuántos billetes/monedas de esta denominación
+        cantidad %= denominaciones[i];  // Actualizar el resto de la cantidad
+    }
+
+    // Mostrar el resultado
+    for (int i = 0; i < 10; i++) {
+        cout << denominaciones[i] << ": " << cantidadBilletesMonedas[i] << endl;
+    }
+
+    // Si queda un valor faltante, lo mostramos
+    if (cantidad > 0) {
+        cout << "Faltante: " << cantidad << endl;
+    }
+}
 void problema2(){
     const int nletras = 200;
     char letras[nletras];
@@ -227,8 +252,113 @@ void problema9(){
     cout << "Suma: " << suma << endl;
 
 }
-void problema10(){}
-void problema11(){}
+void problema10(){
+    char numeroRomano[20];
+    int total = 0;
+    int valorActual = 0;
+    int valorSiguiente = 0;
+
+    cout << "Ingresa un numero en sistema romano: ";
+    cin >> numeroRomano;
+
+    for (int i = 0; numeroRomano[i] != '\0'; i++) {
+
+        if (numeroRomano[i] == 'M') valorActual = 1000;
+        else if (numeroRomano[i] == 'D') valorActual = 500;
+        else if (numeroRomano[i] == 'C') valorActual = 100;
+        else if (numeroRomano[i] == 'L') valorActual = 50;
+        else if (numeroRomano[i] == 'X') valorActual = 10;
+        else if (numeroRomano[i] == 'V') valorActual = 5;
+        else if (numeroRomano[i] == 'I') valorActual = 1;
+
+        if (numeroRomano[i + 1] == 'M') valorSiguiente = 1000;
+        else if (numeroRomano[i + 1] == 'D') valorSiguiente = 500;
+        else if (numeroRomano[i + 1] == 'C') valorSiguiente = 100;
+        else if (numeroRomano[i + 1] == 'L') valorSiguiente = 50;
+        else if (numeroRomano[i + 1] == 'X') valorSiguiente = 10;
+        else if (numeroRomano[i + 1] == 'V') valorSiguiente = 5;
+        else if (numeroRomano[i + 1] == 'I') valorSiguiente = 1;
+        else valorSiguiente = 0;
+
+        if (valorActual < valorSiguiente) {
+            total -= valorActual;
+        } else {
+            total += valorActual;
+        }
+    }
+
+    cout << "El numero ingresado fue: " << numeroRomano << " Que corresponde a: " << total << endl;
+
+}
+void problema11(){
+    const int FILAS = 15;
+    const int ASIENTOS = 20;
+    char sala[FILAS][ASIENTOS]; 
+    char filaLetra;
+    int fila, asiento;
+    char opcion;
+
+    for (int i = 0; i < FILAS; i++) {
+        for (int j = 0; j < ASIENTOS; j++) {
+            sala[i][j] = '-';
+        }
+    }
+
+    do {
+        // Mostrar la sala de cine
+        cout << "Estado actual de la sala de cine:\n";
+        for (int i = 0; i < FILAS; i++) {
+            cout << (char)('A' + i) << "\t"; // Mostrar la letra de la fila
+            for (int j = 0; j < ASIENTOS; j++) {
+                cout << sala[i][j] << "\t";
+            }
+            cout << endl;
+        }
+
+        // Menú de opciones
+        cout << "\nElige una opción:\n";
+        cout << "1. Reservar un asiento\n";
+        cout << "2. Cancelar una reserva\n";
+        cout << "3. Salir\n";
+        cin >> opcion;
+
+        if (opcion == '1' || opcion == '2') {
+            // Solicitar fila y asiento
+            cout << "Ingresa la fila (A-O): ";
+            cin >> filaLetra;
+            fila = filaLetra - 'A'; 
+
+            cout << "Ingresa el número del asiento (1-20): ";
+            cin >> asiento;
+            asiento -= 1;
+
+            // Validar si la fila y el asiento son correctos
+            if (fila >= 0 && fila < FILAS && asiento >= 0 && asiento < ASIENTOS) {
+                if (opcion == '1') {
+                    // Reservar un asiento
+                    if (sala[fila][asiento] == '-') {
+                        sala[fila][asiento] = '+';
+                        cout << "Asiento reservado correctamente.\n";
+                    } else {
+                        cout << "El asiento ya está reservado.\n";
+                    }
+                } else if (opcion == '2') {
+                    // Cancelar una reserva
+                    if (sala[fila][asiento] == '+') {
+                        sala[fila][asiento] = '-';
+                        cout << "Reserva cancelada correctamente.\n";
+                    } else {
+                        cout << "El asiento no está reservado.\n";
+                    }
+                }
+            } else {
+                cout << "Fila o número de asiento inválido.\n";
+            }
+        }
+
+    } while (opcion != '3');
+
+}
 void problema12(){}
 void problema13(){}
 void problema14(){}
