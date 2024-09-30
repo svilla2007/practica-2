@@ -96,10 +96,10 @@ void problema1(){
 
     // Arreglos con las denominaciones de billetes y monedas
     int denominaciones[] = {50000, 20000, 10000, 5000, 2000, 1000, 500, 200, 100, 50};
-    int cantidadBilletesMonedas[10] = {0};  // Para almacenar la cantidad de cada denominación
+    int cantidadBilletesMonedas[10] = {0};  // Para almacenar la cantidad de cada denominacion
 
     for (int i = 0; i < 10; i++) {
-        cantidadBilletesMonedas[i] = cantidad / denominaciones[i];  // Cuántos billetes/monedas de esta denominación
+        cantidadBilletesMonedas[i] = cantidad / denominaciones[i];  // Cuántos billetes/monedas de esta denominacion
         cantidad %= denominaciones[i];  // Actualizar el resto de la cantidad
     }
 
@@ -165,22 +165,22 @@ void problema3(){
 }
 void problema4(){
     string num;
-    cout << "Ingresa una cadena de caracteres numéricos: ";
+    cout << "Ingresa una cadena de caracteres numericos: ";
     cin >> num;
 
     int numero = stoi(num);
 
-    cout << "El número convertido a entero es: " << numero << endl;
+    cout << "El numero convertido a entero es: " << numero << endl;
 
 }
 void problema5(){
-    int number;
-    cout << "Ingresa un número entero: ";
-    cin >> number;
+    int numero;
+    cout << "Ingresa un numero entero: ";
+    cin >> numero;
 
-    string result = to_string(number);
+    string result = to_string(numero);
 
-    cout << "El número convertido a cadena es: " << result << endl;
+    cout << "El numero convertido a cadena es: " << result << endl;
 
 }
 void problema6(){
@@ -190,12 +190,12 @@ void problema6(){
 
     for (char &c : palabra) {
         if (c >= 'a' && c <= 'z') {
-            c -= 32; // Convierte a mayúscula
+            c -= 32; // Convierte a mayuscula
         }
     }
 
     // Mostrar resultados
-    cout << "En mayúscula: " << palabra << endl;
+    cout << "En mayuscula: " << palabra << endl;
 
 }
 void problema7(){
@@ -213,7 +213,7 @@ void problema7(){
                 break;
             }
         }
-        // Si no está repetido, agregarlo al resultado
+        // Si no esta repetido, agregarlo al resultado
         if (!repetido) {
             resultado += cadena[i];
         }
@@ -230,7 +230,7 @@ void problema8(){
     cout << "Introduce una cadena: ";
     cin >> cadena;
 
-    // Recorremos la cadena y separamos números de letras
+    // Recorremos la cadena y separamos numeros de letras
     for (int i = 0; i < cadena.length(); i++) {
         if (isdigit(cadena[i])) {
             Numeros += cadena[i];  // Si es un dígito, se agrega a soloNumeros
@@ -251,7 +251,7 @@ void problema9(){
     cout << "Introduce el numero de cifras que desea separar: ";
     cin >> n;
 
-    cout << "Introduce una cadena de caracteres numéricos: ";
+    cout << "Introduce una cadena de caracteres numericos: ";
     cin >> cadena;
 
     // Calcular cuántos ceros agregar si la cadena no es divisible por n
@@ -272,11 +272,11 @@ void problema9(){
     // Iterar sobre la cadena en bloques de n caracteres
     for (int i = 0; i < cadena.length(); i += n) {
         int numero = 0;
-        // Convertir bloque de n caracteres a número
+        // Convertir bloque de n caracteres a numero
         for (int j = 0; j < n; j++) {
             numero = numero * 10 + (cadena[i + j] - '0');
         }
-        suma += numero;  // Sumar el número
+        suma += numero;  // Sumar el numero
     }
 
     cout << "Suma: " << suma << endl;
@@ -370,7 +370,7 @@ void problema11(){
                         sala[fila][asiento] = '+';
                         cout << "Asiento reservado correctamente.\n";
                     } else {
-                        cout << "El asiento ya está reservado.\n";
+                        cout << "El asiento ya esta reservado.\n";
                     }
                 } else if (opcion == '2') {
                     // Cancelar una reserva
@@ -378,11 +378,11 @@ void problema11(){
                         sala[fila][asiento] = '-';
                         cout << "Reserva cancelada correctamente.\n";
                     } else {
-                        cout << "El asiento no está reservado.\n";
+                        cout << "El asiento no esta reservado.\n";
                     }
                 }
             } else {
-                cout << "Fila o número de asiento inválido.\n";
+                cout << "Fila o número de asiento invalido.\n";
             }
         }
 
