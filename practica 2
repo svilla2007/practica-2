@@ -382,7 +382,7 @@ void problema11(){
                     }
                 }
             } else {
-                cout << "Fila o número de asiento invalido.\n";
+                cout << "Fila o numero de asiento invalido.\n";
             }
         }
 
