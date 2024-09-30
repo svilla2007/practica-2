@@ -164,10 +164,40 @@ void problema3(){
 
 }
 void problema4(){
+    string num;
+    cout << "Ingresa una cadena de caracteres numéricos: ";
+    cin >> num;
+
+    int numero = stoi(num);
+
+    cout << "El número convertido a entero es: " << numero << endl;
 
 }
-void problema5(){}
-void problema6(){}
+void problema5(){
+    int number;
+    cout << "Ingresa un número entero: ";
+    cin >> number;
+
+    string result = to_string(number);
+
+    cout << "El número convertido a cadena es: " << result << endl;
+
+}
+void problema6(){
+    string palabra;
+    cout << "Ingresa una plabra: ";
+    cin>> palabra; 
+
+    for (char &c : palabra) {
+        if (c >= 'a' && c <= 'z') {
+            c -= 32; // Convierte a mayúscula
+        }
+    }
+
+    // Mostrar resultados
+    cout << "En mayúscula: " << palabra << endl;
+
+}
 void problema7(){
     string cadena, resultado = "";
 
@@ -293,7 +323,7 @@ void problema10(){
 void problema11(){
     const int FILAS = 15;
     const int ASIENTOS = 20;
-    char sala[FILAS][ASIENTOS]; 
+    char sala[FILAS][ASIENTOS];
     char filaLetra;
     int fila, asiento;
     char opcion;
@@ -326,7 +356,7 @@ void problema11(){
             // Solicitar fila y asiento
             cout << "Ingresa la fila (A-O): ";
             cin >> filaLetra;
-            fila = filaLetra - 'A'; 
+            fila = filaLetra - 'A';
 
             cout << "Ingresa el número del asiento (1-20): ";
             cin >> asiento;
