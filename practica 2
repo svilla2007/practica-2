@@ -13,13 +13,16 @@ void problema8();
 void problema9();
 void problema10();
 void problema11();
-void problema12();
+int problema12();
 void problema13();
-void problema14();
+int problema14();
 void problema15();
-void problema16();
+void imprimirArreglo(int arreglo[]);
+int problema16();
+long int factorial(int num);
 void problema17();
-void problema18();
+int SumaDeDivisores(int numero);
+
 
 int main()
 {
@@ -35,7 +38,7 @@ int main()
     case 2:
         problema2();
         break;
-    break;
+        break;
     case 3:
         problema3();
         break;
@@ -80,9 +83,6 @@ int main()
     case 17 :
         problema17();
         break;
-    case 18:
-        problema18();
-        break;
     default:
         break;
     }
@@ -90,25 +90,21 @@ int main()
 void problema1(){
     int cantidad;
 
-    // Solicitar al usuario la cantidad de dinero
     cout << "Ingrese la cantidad de dinero: ";
     cin >> cantidad;
 
-    // Arreglos con las denominaciones de billetes y monedas
     int denominaciones[] = {50000, 20000, 10000, 5000, 2000, 1000, 500, 200, 100, 50};
-    int cantidadBilletesMonedas[10] = {0};  // Para almacenar la cantidad de cada denominacion
+    int cantidadBilletesMonedas[10] = {0};
 
     for (int i = 0; i < 10; i++) {
-        cantidadBilletesMonedas[i] = cantidad / denominaciones[i];  // Cuántos billetes/monedas de esta denominacion
-        cantidad %= denominaciones[i];  // Actualizar el resto de la cantidad
+        cantidadBilletesMonedas[i] = cantidad / denominaciones[i];
+        cantidad %= denominaciones[i];
     }
 
-    // Mostrar el resultado
     for (int i = 0; i < 10; i++) {
         cout << denominaciones[i] << ": " << cantidadBilletesMonedas[i] << endl;
     }
 
-    // Si queda un valor faltante, lo mostramos
     if (cantidad > 0) {
         cout << "Faltante: " << cantidad << endl;
     }
@@ -137,65 +133,61 @@ void problema2(){
 }
 void problema3(){
     char cadena1[100], cadena2[100];
-     bool iguales = true;
+    bool iguales = true;
 
-     cout << "Introduce la primera cadena: ";
-     cin>>cadena1;
+    cout << "Introduce la primera cadena: ";
+    cin>>cadena1;
 
-     cout << "Introduce la segunda cadena: ";
-     cin>>cadena2;
+    cout << "Introduce la segunda cadena: ";
+    cin>>cadena2;
 
-     // Comparar las cadenas
-     int i = 0;
-     while (cadena1[i] != '\0' || cadena2[i] != '\0') {
-         if (cadena1[i] != cadena2[i]) {
-             iguales = false; // Si encuentra una diferencia, cambia a falso
-             break;
-         }
-         i++;
-     }
+    int i = 0;
+    while (cadena1[i] != '\0' || cadena2[i] != '\0') {
+        if (cadena1[i] != cadena2[i]) {
+            iguales = false;
+            break;
+        }
+        i++;
+    }
 
-     // Verificar si las cadenas son iguales
-     if (iguales) {
-         cout << "Las cadenas son iguales" << endl;
-     } else {
-         cout << "Las cadenas son diferentes" << endl;
-     }
+    if (iguales) {
+        cout << "Las cadenas son iguales" << endl;
+    } else {
+        cout << "Las cadenas son diferentes" << endl;
+    }
 
 }
 void problema4(){
     string num;
-    cout << "Ingresa una cadena de caracteres numericos: ";
+    cout << "Ingresa una cadena de caracteres numéricos: ";
     cin >> num;
 
     int numero = stoi(num);
 
-    cout << "El numero convertido a entero es: " << numero << endl;
+    cout << "El número convertido a entero es: " << numero << endl;
 
 }
 void problema5(){
-    int numero;
-    cout << "Ingresa un numero entero: ";
-    cin >> numero;
+    int number;
+    cout << "Ingresa un número entero: ";
+    cin >> number;
 
-    string result = to_string(numero);
+    string result = to_string(number);
 
-    cout << "El numero convertido a cadena es: " << result << endl;
+    cout << "El número convertido a cadena es: " << result << endl;
 
 }
 void problema6(){
     string palabra;
     cout << "Ingresa una plabra: ";
-    cin>> palabra; 
+    cin>> palabra;
 
     for (char &c : palabra) {
         if (c >= 'a' && c <= 'z') {
-            c -= 32; // Convierte a mayuscula
+            c -= 32;
         }
     }
-
-    // Mostrar resultados
-    cout << "En mayuscula: " << palabra << endl;
+    cout << "En mayúscula: " << palabra << endl;
 
 }
 void problema7(){
@@ -206,14 +198,12 @@ void problema7(){
 
     for (int i = 0; i < cadena.length(); i++) {
         bool repetido = false;
-        // Verificar si el carácter ya está en el resultado
         for (int j = 0; j < resultado.length(); j++) {
             if (cadena[i] == resultado[j]) {
                 repetido = true;
                 break;
             }
         }
-        // Si no esta repetido, agregarlo al resultado
         if (!repetido) {
             resultado += cadena[i];
         }
@@ -230,16 +220,14 @@ void problema8(){
     cout << "Introduce una cadena: ";
     cin >> cadena;
 
-    // Recorremos la cadena y separamos numeros de letras
     for (int i = 0; i < cadena.length(); i++) {
         if (isdigit(cadena[i])) {
-            Numeros += cadena[i];  // Si es un dígito, se agrega a soloNumeros
+            Numeros += cadena[i];
         } else {
-            Texto += cadena[i];    // Si no es un dígito, se agrega a soloTexto
+            Texto += cadena[i];
         }
     }
 
-    // Mostrar resultados
     cout << "Original: " << cadena << endl;
     cout << "Texto: " << Texto << ". Numero: " << Numeros << "." << endl;
 
@@ -251,15 +239,12 @@ void problema9(){
     cout << "Introduce el numero de cifras que desea separar: ";
     cin >> n;
 
-    cout << "Introduce una cadena de caracteres numericos: ";
+    cout << "Introduce una cadena de caracteres numéricos: ";
     cin >> cadena;
-
-    // Calcular cuántos ceros agregar si la cadena no es divisible por n
     int longitud = cadena.length();
     int faltantes = n - (longitud % n);
 
     if (faltantes != n) {
-        // Agregar ceros a la izquierda
         for (int i = 0; i < faltantes; i++) {
             cadena = '0' + cadena;
         }
@@ -269,14 +254,12 @@ void problema9(){
 
     int suma = 0;
 
-    // Iterar sobre la cadena en bloques de n caracteres
     for (int i = 0; i < cadena.length(); i += n) {
         int numero = 0;
-        // Convertir bloque de n caracteres a numero
         for (int j = 0; j < n; j++) {
             numero = numero * 10 + (cadena[i + j] - '0');
         }
-        suma += numero;  // Sumar el numero
+        suma += numero;
     }
 
     cout << "Suma: " << suma << endl;
@@ -335,25 +318,22 @@ void problema11(){
     }
 
     do {
-        // Mostrar la sala de cine
         cout << "Estado actual de la sala de cine:\n";
         for (int i = 0; i < FILAS; i++) {
-            cout << (char)('A' + i) << "\t"; // Mostrar la letra de la fila
+            cout << (char)('A' + i) << "\t";
             for (int j = 0; j < ASIENTOS; j++) {
                 cout << sala[i][j] << "\t";
             }
             cout << endl;
         }
 
-        // Menú de opciones
-        cout << "\nElige una opción:\n";
+        cout << "\nElige una opcion:\n";
         cout << "1. Reservar un asiento\n";
         cout << "2. Cancelar una reserva\n";
         cout << "3. Salir\n";
         cin >> opcion;
 
         if (opcion == '1' || opcion == '2') {
-            // Solicitar fila y asiento
             cout << "Ingresa la fila (A-O): ";
             cin >> filaLetra;
             fila = filaLetra - 'A';
@@ -362,37 +342,327 @@ void problema11(){
             cin >> asiento;
             asiento -= 1;
 
-            // Validar si la fila y el asiento son correctos
             if (fila >= 0 && fila < FILAS && asiento >= 0 && asiento < ASIENTOS) {
                 if (opcion == '1') {
-                    // Reservar un asiento
                     if (sala[fila][asiento] == '-') {
                         sala[fila][asiento] = '+';
                         cout << "Asiento reservado correctamente.\n";
                     } else {
-                        cout << "El asiento ya esta reservado.\n";
+                        cout << "El asiento ya está reservado.\n";
                     }
                 } else if (opcion == '2') {
-                    // Cancelar una reserva
                     if (sala[fila][asiento] == '+') {
                         sala[fila][asiento] = '-';
                         cout << "Reserva cancelada correctamente.\n";
                     } else {
-                        cout << "El asiento no esta reservado.\n";
+                        cout << "El asiento no está reservado.\n";
                     }
                 }
             } else {
-                cout << "Fila o numero de asiento invalido.\n";
+                cout << "Fila o número de asiento inválido.\n";
             }
         }
 
     } while (opcion != '3');
 
 }
-void problema12(){}
-void problema13(){}
-void problema14(){}
-void problema15(){}
-void problema16(){}
-void problema17(){}
-void problema18(){}
+int problema12() {
+    int tamano = 0;
+    cout << "Ingrese el tamano de la matriz cuadrada: ";
+    cin >> tamano;
+
+    int matriz[tamano][tamano];
+
+    for (int i = 0; i < tamano; i++) {
+        for (int j = 0; j < tamano; j++) {
+            cout << "Ingrese el valor de la posicion: "<<i<<" "<<j<<endl;
+            cin >> matriz[i][j];
+        }
+    }
+
+
+    cout << "Matriz ingresada:" << endl;
+    for (int i = 0; i < tamano; i++) {
+        for (int j = 0; j < tamano; j++) {
+            cout << matriz[i][j] << " ";
+        }
+        cout << endl;
+    }
+
+    int suma_magica = 0;
+    for (int j = 0; j < tamano; j++) {
+        suma_magica += matriz[0][j];
+    }
+
+    for (int i = 1; i < tamano; i++) {
+        int suma_fila = 0;
+        for (int j = 0; j < tamano; j++) {
+            suma_fila += matriz[i][j];
+        }
+        if (suma_fila != suma_magica) {
+            cout << "La matriz no es un cuadrado magico." << endl;
+            return 0;
+        }
+    }
+
+    for (int j = 0; j < tamano; j++) {
+        int suma_columna = 0;
+        for (int i = 0; i < tamano; i++) {
+            suma_columna += matriz[i][j];
+        }
+        if (suma_columna != suma_magica) {
+            cout << "La matriz no es un cuadrado magico." << endl;
+            return 0;
+        }
+    }
+
+    int suma_diagonal1 = 0;
+    for (int i = 0; i < tamano; i++) {
+        suma_diagonal1 += matriz[i][i];
+    }
+    if (suma_diagonal1 != suma_magica) {
+        cout << "La matriz no es un cuadrado magico." << endl;
+        return 0;
+    }
+
+    int suma_diagonal2 = 0;
+    for (int i = 0; i < tamano; i++) {
+        suma_diagonal2 += matriz[i][tamano - i - 1];
+    }
+    if (suma_diagonal2 != suma_magica) {
+        cout << "La matriz no es un cuadrado magico." << endl;
+        return 0;
+    }
+
+    cout << "La matriz es un cuadrado magico" << endl;
+    return 0;
+}
+
+
+
+
+void problema13() {
+    int galaxia[6][8] = {{0, 3, 4, 0, 0, 0, 6, 8},
+                         {5, 13, 6, 0, 0, 0, 2, 3},
+                         {2, 6, 2, 7, 3, 0, 10, 0},
+                         {0, 0, 4, 15, 4, 1, 6, 0},
+                         {0, 0, 7, 12, 6, 9, 10, 4},
+                         {5, 0, 6, 10, 6, 4, 8, 0}};
+
+    int numeroestrellas = 0;
+    float suma = 0, promedio = 0;
+
+    for (int i = 1; i < 5; i++) {
+        for (int j = 1; j < 7; j++) {
+            suma = galaxia[i][j] + galaxia[i][j-1] + galaxia[i][j+1] +
+                   galaxia[i-1][j] + galaxia[i+1][j];
+
+            promedio = suma / 5.0;
+
+            if (promedio > 6) {
+                numeroestrellas++;
+            }
+        }
+    }
+    cout << "El número de estrellas es: " << numeroestrellas << endl;
+}
+
+
+int problema14(){
+    int matriz[5][5];
+    int numeros=1;
+    cout<<"La matriz es: "<<endl;
+    for (int fila=0;fila<5;fila++){
+        for (int columna=0;columna<5;columna++){
+            matriz[fila][columna]=numeros;
+            numeros++;
+            cout<<matriz[fila][columna]<<" ";
+        }
+        cout<<endl;
+    }
+
+    int matriz90[5][5];
+    int numeros90 = 1;
+
+    for (int columna90 = 4; columna90 >= 0; columna90--) {
+        for (int fila90 = 0; fila90 < 5; fila90++) {
+            matriz90[fila90][columna90] = numeros90;
+            numeros90++;
+        }
+    }
+
+    cout << "Matriz rotada 90 grados:" << endl;
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 5; j++) {
+            cout << matriz90[i][j] << " ";
+        }
+        cout << endl;
+    }
+    int matriz180[5][5];
+    int numeros180=1;
+    for (int fila180 = 4; fila180 >=0; fila180--) {
+        for (int columna180 = 4; columna180>=0; columna180--) {
+            matriz180[fila180][columna180] = numeros180;
+            numeros180++;
+        }
+    }
+    cout<<"Matriz rotada en 180 grados: "<<endl;
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 5; j++) {
+            cout << matriz180[i][j] << " ";
+        }
+        cout << endl;
+    }
+    int matriz270[5][5];
+    int numeros270=1;
+    for (int columna270 = 0; columna270 <5; columna270++) {
+        for (int fila270 = 4; fila270>=0; fila270--) {
+            matriz270[fila270][columna270] = numeros270;
+            numeros270++;
+        }
+    }
+    cout<<"Matriz rotada en 270 grados: "<<endl;
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 5; j++) {
+            cout << matriz270[i][j] << " ";
+        }
+        cout << endl;
+    }
+    return 0;
+}
+
+void imprimirArreglo(int arreglo[]) {
+    for (int i = 0; i < 4; i++) {
+        if (i == 3) {
+            cout << arreglo[i];
+        } else {
+            cout << arreglo[i] << ", ";
+        }
+    }
+}
+
+void problema15() {
+    int arreglo1[4] = {0, 0, 8, 4};
+    int arreglo2[4] = {5, 2, 6, 7};
+    int interseccion[4] = {0, 0, 0, 0};
+    int x = 0, y = 1, w = 2, h = 3;
+
+    cout << "El arreglo 1 es: {";
+    imprimirArreglo(arreglo1);
+    cout << "}" << endl;
+
+    cout << "El arreglo 2 es: {";
+    imprimirArreglo(arreglo2);
+    cout << "}" << endl;
+
+    if (arreglo1[x] == arreglo2[x] && (arreglo1[x] + arreglo1[w] == arreglo2[x] + arreglo2[w])) {
+        if (arreglo1[y] == arreglo2[y] && (arreglo1[y] + arreglo1[h] == arreglo2[y] + arreglo2[h])) {
+            interseccion[x] = arreglo1[x];
+            interseccion[y] = arreglo1[y];
+            interseccion[w] = arreglo1[w];
+            interseccion[h] = arreglo1[h];
+            cout << "Las figuras son iguales" << endl;
+        }
+    } else {
+        if ((arreglo1[x] >= arreglo2[x])) {
+            interseccion[x] = arreglo1[x];
+
+            if ((arreglo2[x] + arreglo2[w]) <= arreglo1[x]) {
+                cout << "La interseccion no existe" << endl;
+
+            } else if (arreglo1[x] + arreglo1[w] <= arreglo2[x] + arreglo2[w]) {
+                interseccion[w] = arreglo1[x] + arreglo1[w] - interseccion[x];
+
+            } else {
+                interseccion[w] = arreglo2[x] + arreglo2[w] - interseccion[x];
+            }
+
+        } else {
+            interseccion[x] = arreglo2[x];
+            if ((arreglo1[x] + arreglo1[w]) <= arreglo2[x]) {
+                cout << "La intersección no existe" << endl;
+            } else if (arreglo2[x] + arreglo2[w] <= arreglo1[x] + arreglo1[w]) {
+                interseccion[w] = arreglo2[x] + arreglo2[w] - interseccion[x];
+            } else {
+                interseccion[w] = arreglo1[x] + arreglo1[w] - interseccion[x];
+            }
+        }
+
+        if ((arreglo1[y] >= arreglo2[y])) {
+            interseccion[y] = arreglo2[y];
+            if ((arreglo1[y] + arreglo1[h]) <= arreglo2[y]) {
+                cout << "La intersección no existe" << endl;
+
+            } else if ((arreglo1[y] + arreglo1[h]) >= (arreglo2[y] + arreglo2[h])) {
+                interseccion[h] = arreglo2[y] + arreglo2[h] - interseccion[y];
+
+            } else {
+                interseccion[h] = arreglo1[y] + arreglo1[h] - interseccion[y];
+            }
+
+        } else {
+            interseccion[y] = arreglo1[y];
+
+            if ((arreglo2[y] + arreglo2[h]) <= arreglo1[y]) {
+                cout << "La intersección no existe" << endl;
+
+            } else if ((arreglo2[y] + arreglo2[h]) >= (arreglo1[y] + arreglo1[h])) {
+                interseccion[h] = arreglo1[y] + arreglo1[h] - interseccion[y];
+
+            } else {
+                interseccion[h] = arreglo2[y] + arreglo2[h] - interseccion[y];
+            }
+        }
+    }
+
+    cout << "El arreglo de la intersección es: {";
+    imprimirArreglo(interseccion);
+    cout << "}" << endl;
+}
+
+long int factorial(int num) {
+    long int resultado = 1;
+    for (int i = 1; i <= num; i++) {
+        resultado *= i;
+    }
+    return resultado;
+}
+int problema16(){
+    int numero;
+    cout<<"Escriba el numero n para determinar la cantidad de caminos posibles: "<<endl;
+    cin>> numero;
+    long long int resultado=factorial(2*numero)/(factorial(numero)*factorial(numero));
+    cout<<"El resultado es: "<<resultado<<endl;
+    return 0;
+}
+
+int SumaDeDivisores(int numero) {
+    int suma = 0;
+    for (int i = 1; i <= numero / 2; i++) {
+        if (numero % i == 0) {
+            suma += i;
+        }
+    }
+    return suma;
+}
+
+void problema17() {
+    int limite, numero2, suma_numeros_amigos = 0, suma_divisores_num2;
+    cout << "Ingrese un numero limite: ";
+    cin >> limite;
+
+    for (int numero1 = 220; numero1 < limite; numero1++) {
+        numero2 = SumaDeDivisores(numero1);
+        suma_divisores_num2 = SumaDeDivisores(numero2);
+        if (suma_divisores_num2 == numero1 && numero1 != numero2) {
+            suma_numeros_amigos += numero1;
+        }
+    }
+
+    if (suma_numeros_amigos == 0) {
+        cout << "No hay numeros amigos menores al numero ingresado" << endl;
+    } else {
+        cout << "La suma de los numeros amigos menores que " << limite << " es " << suma_numeros_amigos << endl;
+    }
+}
+
